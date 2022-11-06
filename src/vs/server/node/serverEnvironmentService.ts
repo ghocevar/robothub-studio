@@ -3,12 +3,12 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import * as nls from 'vs/nls';
+import * as nls from 'vs/nls'
 
-import { NativeEnvironmentService } from 'vs/platform/environment/node/environmentService';
-import { OPTIONS, OptionDescriptions } from 'vs/platform/environment/node/argv';
-import { refineServiceDecorator } from 'vs/platform/instantiation/common/instantiation';
-import { IEnvironmentService, INativeEnvironmentService } from 'vs/platform/environment/common/environment';
+import { NativeEnvironmentService } from 'vs/platform/environment/node/environmentService'
+import { OPTIONS, OptionDescriptions } from 'vs/platform/environment/node/argv'
+import { refineServiceDecorator } from 'vs/platform/instantiation/common/instantiation'
+import { IEnvironmentService, INativeEnvironmentService } from 'vs/platform/environment/common/environment'
 
 export const serverOptions: OptionDescriptions<Required<ServerParsedArgs>> = {
 
@@ -17,6 +17,8 @@ export const serverOptions: OptionDescriptions<Required<ServerParsedArgs>> = {
 	'host': { type: 'string', cat: 'o', args: 'ip-address', description: nls.localize('host', "The host name or IP address the server should listen to. If not set, defaults to 'localhost'.") },
 	'port': { type: 'string', cat: 'o', args: 'port | port range', description: nls.localize('port', "The port the server should listen to. If 0 is passed a random free port is picked. If a range in the format num-num is passed, a free port from the range (end inclusive) is selected.") },
 	'socket-path': { type: 'string', cat: 'o', args: 'path', description: nls.localize('socket-path', "The path to a socket file for the server to listen to.") },
+	// eslint-disable-next-line local/code-no-unexternalized-strings
+	'base-path': { type: 'string', cat: 'o', args: 'path', description: nls.localize('socket-path', "The base path to listen on") },
 	'connection-token': { type: 'string', cat: 'o', args: 'token', deprecates: ['connectionToken'], description: nls.localize('connection-token', "A secret that must be included with all requests.") },
 	'connection-token-file': { type: 'string', cat: 'o', args: 'path', deprecates: ['connection-secret', 'connectionTokenFile'], description: nls.localize('connection-token-file', "Path to a file that contains the connection token.") },
 	'without-connection-token': { type: 'boolean', cat: 'o', description: nls.localize('without-connection-token', "Run without a connection token. Only use this if the connection is secured by other means.") },
@@ -85,18 +87,19 @@ export const serverOptions: OptionDescriptions<Required<ServerParsedArgs>> = {
 	'compatibility': { type: 'string' },
 
 	_: OPTIONS['_']
-};
+}
 
 export interface ServerParsedArgs {
 
 	/* ----- server setup ----- */
 
-	host?: string;
+	host?: string
 	/**
 	 * A port or a port range
 	 */
-	port?: string;
-	'socket-path'?: string;
+	port?: string
+	'socket-path'?: string
+	'base-path'?: string
 
 	/**
 	 * A secret token that must be provided by the web client with all requests.
@@ -108,7 +111,7 @@ export interface ServerParsedArgs {
 	 * using `--connection-token-file` which has the advantage that the token cannot
 	 * be seen by other users using `ps` or similar commands.
 	 */
-	'connection-token'?: string;
+	'connection-token'?: string
 	/**
 	 * A path to a filename which will be read on startup.
 	 * Consider placing this file in a folder readable only by the same user (a `chmod 0700` directory).
@@ -118,96 +121,100 @@ export interface ServerParsedArgs {
 	 *
 	 * This secret must be communicated to any vscode instance via the resolver or embedder API.
 	 */
-	'connection-token-file'?: string;
+	'connection-token-file'?: string
 
 	/**
 	 * Run the server without a connection token
 	 */
-	'without-connection-token'?: boolean;
+	'without-connection-token'?: boolean
 
-	'disable-websocket-compression'?: boolean;
+	'disable-websocket-compression'?: boolean
 
-	'print-startup-performance'?: boolean;
-	'print-ip-address'?: boolean;
+	'print-startup-performance'?: boolean
+	'print-ip-address'?: boolean
 
-	'accept-server-license-terms': boolean;
+	'accept-server-license-terms': boolean
 
-	'server-data-dir'?: string;
+	'server-data-dir'?: string
 
-	'telemetry-level'?: string;
+	'telemetry-level'?: string
 
-	'disable-workspace-trust'?: boolean;
+	'disable-workspace-trust'?: boolean
 
 	/* ----- vs code options ----- */
 
-	'user-data-dir'?: string;
+	'user-data-dir'?: string
 
-	'enable-smoke-test-driver'?: boolean;
+	'enable-smoke-test-driver'?: boolean
 
-	'disable-telemetry'?: boolean;
-	'file-watcher-polling'?: string;
+	'disable-telemetry'?: boolean
+	'file-watcher-polling'?: string
 
-	'log'?: string[];
-	'logsPath'?: string;
+	'log'?: string[]
+	'logsPath'?: string
 
-	'force-disable-user-env'?: boolean;
+	'force-disable-user-env'?: boolean
 
 	/* ----- vs code web options ----- */
 
-	'default-workspace'?: string;
-	'default-folder'?: string;
+	'default-workspace'?: string
+	'default-folder'?: string
 
 	/** @deprecated, use default-workspace instead */
-	workspace: string;
+	workspace: string
 	/** @deprecated, use default-folder instead */
-	folder: string;
+	folder: string
 
 
-	'enable-sync'?: boolean;
-	'github-auth'?: string;
+	'enable-sync'?: boolean
+	'github-auth'?: string
 
 	/* ----- extension management ----- */
 
-	'extensions-dir'?: string;
-	'extensions-download-dir'?: string;
-	'builtin-extensions-dir'?: string;
-	'install-extension'?: string[];
-	'install-builtin-extension'?: string[];
-	'uninstall-extension'?: string[];
-	'list-extensions'?: boolean;
-	'locate-extension'?: string[];
-	'show-versions'?: boolean;
-	'category'?: string;
-	force?: boolean; // used by install-extension
-	'do-not-sync'?: boolean; // used by install-extension
-	'pre-release'?: boolean; // used by install-extension
+	'extensions-dir'?: string
+	'extensions-download-dir'?: string
+	'builtin-extensions-dir'?: string
+	'install-extension'?: string[]
+	'install-builtin-extension'?: string[]
+	'uninstall-extension'?: string[]
+	'list-extensions'?: boolean
+	'locate-extension'?: string[]
+	'show-versions'?: boolean
+	'category'?: string
+	force?: boolean // used by install-extension
+	'do-not-sync'?: boolean // used by install-extension
+	'pre-release'?: boolean // used by install-extension
 
-	'start-server'?: boolean;
+	'start-server'?: boolean
 
 	/* ----- remote development options ----- */
 
-	'enable-remote-auto-shutdown'?: boolean;
-	'remote-auto-shutdown-without-delay'?: boolean;
+	'enable-remote-auto-shutdown'?: boolean
+	'remote-auto-shutdown-without-delay'?: boolean
 
-	'use-host-proxy'?: boolean;
-	'without-browser-env-var'?: boolean;
+	'use-host-proxy'?: boolean
+	'without-browser-env-var'?: boolean
 
 	/* ----- server cli ----- */
-	help: boolean;
-	version: boolean;
-	'locate-shell-integration-path'?: string;
+	help: boolean
+	version: boolean
+	'locate-shell-integration-path'?: string
 
-	compatibility: string;
+	compatibility: string
 
-	_: string[];
+	_: string[]
 }
 
-export const IServerEnvironmentService = refineServiceDecorator<IEnvironmentService, IServerEnvironmentService>(IEnvironmentService);
+export const IServerEnvironmentService = refineServiceDecorator<IEnvironmentService, IServerEnvironmentService>(IEnvironmentService)
 
 export interface IServerEnvironmentService extends INativeEnvironmentService {
-	readonly args: ServerParsedArgs;
+	readonly args: ServerParsedArgs
 }
 
 export class ServerEnvironmentService extends NativeEnvironmentService implements IServerEnvironmentService {
-	override get args(): ServerParsedArgs { return super.args as ServerParsedArgs; }
+	override get args(): ServerParsedArgs { return super.args as ServerParsedArgs }
+
+	get basePath(): string | undefined {
+		return this.args['base-path']
+	}
 }

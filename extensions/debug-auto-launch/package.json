@@ -1,51 +1,57 @@
 {
-  "name": "debug-auto-launch",
-  "displayName": "%displayName%",
-  "description": "%description%",
-  "version": "1.0.0",
-  "publisher": "vscode",
-  "license": "MIT",
-  "engines": {
-    "vscode": "^1.5.0"
-  },
-  "icon": "media/icon.png",
-  "capabilities": {
-    "virtualWorkspaces": false,
-    "untrustedWorkspaces": {
-      "supported": true
-    }
-  },
-  "activationEvents": [
-    "onStartupFinished"
-  ],
-  "main": "./out/extension",
-  "scripts": {
-    "compile": "gulp compile-extension:debug-auto-launch",
-    "watch": "gulp watch-extension:debug-auto-launch"
-  },
-  "contributes": {
-    "commands": [
-      {
-        "command": "extension.node-debug.toggleAutoAttach",
-        "title": "%toggle.auto.attach%",
-        "category": "Debug"
-      }
-    ]
-  },
-  "dependencies": {
-    "vscode-nls": "^5.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "16.x"
-  },
-  "prettier": {
-    "printWidth": 100,
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "avoid"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/microsoft/vscode.git"
-  }
+	"name": "debug-auto-launch",
+	"displayName": "%displayName%",
+	"description": "%description%",
+	"version": "1.0.0",
+	"publisher": "vscode",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.5.0"
+	},
+	"icon": "media/icon.png",
+	"capabilities": {
+		"virtualWorkspaces": false,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/extension",
+	"scripts": {
+		"compile": "gulp compile-extension:debug-auto-launch",
+		"watch": "gulp watch-extension:debug-auto-launch"
+	},
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.node-debug.toggleAutoAttach",
+				"title": "%toggle.auto.attach%",
+				"category": "Debug"
+			}
+		]
+	},
+	"dependencies": {
+		"vscode-nls": "^5.2.0"
+	},
+	"devDependencies": {
+		"@types/node": "16.x"
+	},
+	"prettier": {
+		"printWidth": 100,
+		"trailingComma": "all",
+		"singleQuote": true,
+		"arrowParens": "avoid"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/vscode.git"
+	},
+	"__metadata": {
+		"id": "644dd983-e5c6-4767-9dd5-2b109138dfd0",
+		"publisherDisplayName": "vscode",
+		"publisherId": "9156ae8e-c2fd-4dab-9232-54bbce5b1621",
+		"isPreReleaseVersion": false
+	}
 }

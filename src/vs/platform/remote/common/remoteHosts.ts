@@ -3,26 +3,26 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { Schemas } from 'vs/base/common/network';
-import { URI } from 'vs/base/common/uri';
+import { Schemas } from 'vs/base/common/network'
+import { URI } from 'vs/base/common/uri'
 
 export function getRemoteAuthority(uri: URI): string | undefined {
-	return uri.scheme === Schemas.vscodeRemote ? uri.authority : undefined;
+	return uri.scheme === Schemas.vscodeRemote ? uri.authority : undefined
 }
 
-export function getRemoteName(authority: string): string;
-export function getRemoteName(authority: undefined): undefined;
-export function getRemoteName(authority: string | undefined): string | undefined;
+export function getRemoteName(authority: string): string
+export function getRemoteName(authority: undefined): undefined
+export function getRemoteName(authority: string | undefined): string | undefined
 export function getRemoteName(authority: string | undefined): string | undefined {
 	if (!authority) {
-		return undefined;
+		return undefined
 	}
-	const pos = authority.indexOf('+');
+	const pos = authority.indexOf('+')
 	if (pos < 0) {
 		// e.g. localhost:8000
-		return authority;
+		return authority
 	}
-	return authority.substr(0, pos);
+	return authority.substr(0, pos)
 }
 
 /**
@@ -30,45 +30,45 @@ export function getRemoteName(authority: string | undefined): string | undefined
  * @param product
  * @returns
  */
-export function getRemoteServerRootPath(product: { quality?: string; commit?: string }): string {
-	return `/${product.quality ?? 'oss'}-${product.commit ?? 'dev'}`;
+export function getRemoteServerRootPath(product: { quality?: string; commit?: string }, basePath?: string): string {
+	return basePath ?? `/${product.quality ?? 'oss'}-${product.commit ?? 'dev'}`
 }
 
 export function parseAuthorityWithPort(authority: string): { host: string; port: number } {
-	const { host, port } = parseAuthority(authority);
+	const { host, port } = parseAuthority(authority)
 	if (typeof port === 'undefined') {
-		throw new Error(`Remote authority doesn't contain a port!`);
+		throw new Error(`Remote authority doesn't contain a port!`)
 	}
-	return { host, port };
+	return { host, port }
 }
 
 export function parseAuthorityWithOptionalPort(authority: string, defaultPort: number): { host: string; port: number } {
-	let { host, port } = parseAuthority(authority);
+	let { host, port } = parseAuthority(authority)
 	if (typeof port === 'undefined') {
-		port = defaultPort;
+		port = defaultPort
 	}
-	return { host, port };
+	return { host, port }
 }
 
 function parseAuthority(authority: string): { host: string; port: number | undefined } {
 	// check for ipv6 with port
-	const m1 = authority.match(/^(\[[0-9a-z:]+\]):(\d+)$/);
+	const m1 = authority.match(/^(\[[0-9a-z:]+\]):(\d+)$/)
 	if (m1) {
-		return { host: m1[1], port: parseInt(m1[2], 10) };
+		return { host: m1[1], port: parseInt(m1[2], 10) }
 	}
 
 	// check for ipv6 without port
-	const m2 = authority.match(/^(\[[0-9a-z:]+\])$/);
+	const m2 = authority.match(/^(\[[0-9a-z:]+\])$/)
 	if (m2) {
-		return { host: m2[1], port: undefined };
+		return { host: m2[1], port: undefined }
 	}
 
 	// anything with a trailing port
-	const m3 = authority.match(/(.*):(\d+)$/);
+	const m3 = authority.match(/(.*):(\d+)$/)
 	if (m3) {
-		return { host: m3[1], port: parseInt(m3[2], 10) };
+		return { host: m3[1], port: parseInt(m3[2], 10) }
 	}
 
 	// doesn't contain a port
-	return { host: authority, port: undefined };
+	return { host: authority, port: undefined }
 }

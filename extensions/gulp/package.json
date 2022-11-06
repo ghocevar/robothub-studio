@@ -1,75 +1,81 @@
 {
-  "name": "gulp",
-  "publisher": "vscode",
-  "description": "%description%",
-  "displayName": "%displayName%",
-  "version": "1.0.0",
-  "icon": "images/gulp.png",
-  "license": "MIT",
-  "engines": {
-    "vscode": "*"
-  },
-  "categories": [
-    "Other"
-  ],
-  "scripts": {
-    "compile": "gulp compile-extension:gulp",
-    "watch": "gulp watch-extension:gulp"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@types/node": "16.x"
-  },
-  "main": "./out/main",
-  "activationEvents": [
-    "onTaskType:gulp"
-  ],
-  "capabilities": {
-    "virtualWorkspaces": false,
-    "untrustedWorkspaces": {
-      "supported": true
-    }
-  },
-  "contributes": {
-    "configuration": {
-      "id": "gulp",
-      "type": "object",
-      "title": "Gulp",
-      "properties": {
-        "gulp.autoDetect": {
-          "scope": "application",
-          "type": "string",
-          "enum": [
-            "off",
-            "on"
-          ],
-          "default": "off",
-          "description": "%config.gulp.autoDetect%"
-        }
-      }
-    },
-    "taskDefinitions": [
-      {
-        "type": "gulp",
-        "required": [
-          "task"
-        ],
-        "properties": {
-          "task": {
-            "type": "string",
-            "description": "%gulp.taskDefinition.type.description%"
-          },
-          "file": {
-            "type": "string",
-            "description": "%gulp.taskDefinition.file.description%"
-          }
-        },
-        "when": "shellExecutionSupported"
-      }
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/microsoft/vscode.git"
-  }
+	"name": "gulp",
+	"publisher": "vscode",
+	"description": "%description%",
+	"displayName": "%displayName%",
+	"version": "1.0.0",
+	"icon": "images/gulp.png",
+	"license": "MIT",
+	"engines": {
+		"vscode": "*"
+	},
+	"categories": [
+		"Other"
+	],
+	"scripts": {
+		"compile": "gulp compile-extension:gulp",
+		"watch": "gulp watch-extension:gulp"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@types/node": "16.x"
+	},
+	"main": "./out/main",
+	"activationEvents": [
+		"onTaskType:gulp"
+	],
+	"capabilities": {
+		"virtualWorkspaces": false,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"contributes": {
+		"configuration": {
+			"id": "gulp",
+			"type": "object",
+			"title": "Gulp",
+			"properties": {
+				"gulp.autoDetect": {
+					"scope": "application",
+					"type": "string",
+					"enum": [
+						"off",
+						"on"
+					],
+					"default": "off",
+					"description": "%config.gulp.autoDetect%"
+				}
+			}
+		},
+		"taskDefinitions": [
+			{
+				"type": "gulp",
+				"required": [
+					"task"
+				],
+				"properties": {
+					"task": {
+						"type": "string",
+						"description": "%gulp.taskDefinition.type.description%"
+					},
+					"file": {
+						"type": "string",
+						"description": "%gulp.taskDefinition.file.description%"
+					}
+				},
+				"when": "shellExecutionSupported"
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/vscode.git"
+	},
+	"__metadata": {
+		"id": "d25199cc-b8b2-43df-b229-7aac935e4f74",
+		"publisherDisplayName": "vscode",
+		"publisherId": "9156ae8e-c2fd-4dab-9232-54bbce5b1621",
+		"isPreReleaseVersion": false
+	}
 }

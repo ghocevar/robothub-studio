@@ -1,75 +1,81 @@
 {
-  "name": "jake",
-  "publisher": "vscode",
-  "description": "%description%",
-  "displayName": "%displayName%",
-  "icon": "images/cowboy_hat.png",
-  "version": "1.0.0",
-  "license": "MIT",
-  "engines": {
-    "vscode": "*"
-  },
-  "categories": [
-    "Other"
-  ],
-  "scripts": {
-    "compile": "gulp compile-extension:jake",
-    "watch": "gulp watch-extension:jake"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@types/node": "16.x"
-  },
-  "main": "./out/main",
-  "activationEvents": [
-    "onTaskType:jake"
-  ],
-  "capabilities": {
-    "virtualWorkspaces": false,
-    "untrustedWorkspaces": {
-      "supported": true
-    }
-  },
-  "contributes": {
-    "configuration": {
-      "id": "jake",
-      "type": "object",
-      "title": "Jake",
-      "properties": {
-        "jake.autoDetect": {
-          "scope": "application",
-          "type": "string",
-          "enum": [
-            "off",
-            "on"
-          ],
-          "default": "off",
-          "description": "%config.jake.autoDetect%"
-        }
-      }
-    },
-    "taskDefinitions": [
-      {
-        "type": "jake",
-        "required": [
-          "task"
-        ],
-        "properties": {
-          "task": {
-            "type": "string",
-            "description": "%jake.taskDefinition.type.description%"
-          },
-          "file": {
-            "type": "string",
-            "description": "%jake.taskDefinition.file.description%"
-          }
-        },
-        "when": "shellExecutionSupported"
-      }
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/microsoft/vscode.git"
-  }
+	"name": "jake",
+	"publisher": "vscode",
+	"description": "%description%",
+	"displayName": "%displayName%",
+	"icon": "images/cowboy_hat.png",
+	"version": "1.0.0",
+	"license": "MIT",
+	"engines": {
+		"vscode": "*"
+	},
+	"categories": [
+		"Other"
+	],
+	"scripts": {
+		"compile": "gulp compile-extension:jake",
+		"watch": "gulp watch-extension:jake"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@types/node": "16.x"
+	},
+	"main": "./out/main",
+	"activationEvents": [
+		"onTaskType:jake"
+	],
+	"capabilities": {
+		"virtualWorkspaces": false,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"contributes": {
+		"configuration": {
+			"id": "jake",
+			"type": "object",
+			"title": "Jake",
+			"properties": {
+				"jake.autoDetect": {
+					"scope": "application",
+					"type": "string",
+					"enum": [
+						"off",
+						"on"
+					],
+					"default": "off",
+					"description": "%config.jake.autoDetect%"
+				}
+			}
+		},
+		"taskDefinitions": [
+			{
+				"type": "jake",
+				"required": [
+					"task"
+				],
+				"properties": {
+					"task": {
+						"type": "string",
+						"description": "%jake.taskDefinition.type.description%"
+					},
+					"file": {
+						"type": "string",
+						"description": "%jake.taskDefinition.file.description%"
+					}
+				},
+				"when": "shellExecutionSupported"
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/vscode.git"
+	},
+	"__metadata": {
+		"id": "de7af924-4fa9-4b85-97bd-97a31f12d2c2",
+		"publisherDisplayName": "vscode",
+		"publisherId": "9156ae8e-c2fd-4dab-9232-54bbce5b1621",
+		"isPreReleaseVersion": false
+	}
 }
