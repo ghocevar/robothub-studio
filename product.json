@@ -1,42 +1,42 @@
 {
-	"nameShort": "OpenVSCode Server",
-	"nameLong": "OpenVSCode Server",
-	"applicationName": "openvscode-server",
-	"dataFolderName": ".openvscode-server",
-	"win32MutexName": "openvscodeserver",
+	"nameShort": "RobotHub Studio",
+	"nameLong": "RobotHub Studio",
+	"applicationName": "robothub-studio",
+	"dataFolderName": ".robothub-studio",
+	"win32MutexName": "robothubstudio",
 	"licenseName": "MIT",
 	"licenseUrl": "https://github.com/gitpod-io/openvscode-server/blob/main/LICENSE.txt",
 	"serverGreeting": [],
 	"serverLicense": [],
 	"serverLicensePrompt": "",
-	"serverApplicationName": "openvscode-server",
-	"serverDataFolderName": ".openvscode-server",
-	"tunnelApplicationName": "openvscode-server-tunnel",
-	"win32DirName": "OpenVSCode Server",
-	"win32NameVersion": "OpenVSCode Server",
-	"win32RegValueName": "OpenVSCodeServer",
+	"serverApplicationName": "robothub-studio",
+	"serverDataFolderName": ".robothub-studio",
+	"tunnelApplicationName": "robothub-studio-tunnel",
+	"win32DirName": "RobotHub Studio",
+	"win32NameVersion": "RobotHub Studio",
+	"win32RegValueName": "RobotHubStudio",
 	"win32AppId": "{{E34003BB-9E10-4501-8C11-BE3FAA83F23F}",
 	"win32x64AppId": "{{D77B7E06-80BA-4137-BCF4-654B95CCEBC5}",
 	"win32arm64AppId": "{{D1ACE434-89C5-48D1-88D3-E2991DF85475}",
 	"win32UserAppId": "{{C6065F05-9603-4FC4-8101-B9781A25D88E}",
 	"win32x64UserAppId": "{{CC6B787D-37A0-49E8-AE24-8559A032BE0C}",
 	"win32arm64UserAppId": "{{3AEBF0C8-F733-4AD4-BADE-FDB816D53D7B}",
-	"win32AppUserModelId": "OpenVSCode Server",
-	"win32ShellNameShort": "OpenVSC&ode Server",
-	"darwinBundleIdentifier": "openvscode.server",
-	"linuxIconName": "openvscode.server",
+	"win32AppUserModelId": "RobotHub Studio",
+	"win32ShellNameShort": "OpenVSC&RobotHub Studio",
+	"darwinBundleIdentifier": "robothubstudio.server",
+	"linuxIconName": "robothubstudio.server",
 	"licenseFileName": "LICENSE.txt",
-	"twitterUrl": "https://twitter.com/gitpod",
-	"reportIssueUrl": "https://github.com/gitpod-io/openvscode-server/issues/new",
-	"requestFeatureUrl": "https://github.com/gitpod-io/openvscode-server/issues",
+	"twitterUrl": "https://twitter.com/luxonis",
+	"reportIssueUrl": "mailto:support@luxonis.com",
+	"requestFeatureUrl": "mailto:support@luxonis.com",
 	"reportMarketplaceIssueUrl": "https://github.com/eclipse/openvsx/issues",
 	"sendASmile": {
-		"reportIssueUrl": "https://github.com/gitpod-io/openvscode-server/issues/new",
-		"requestFeatureUrl": "https://github.com/gitpod-io/openvscode-server/issues"
+		"reportIssueUrl": "mailto:support@luxonis.com",
+		"requestFeatureUrl": "mailto:support@luxonis.com"
 	},
-	"urlProtocol": "openvscode-server",
-	"embedderIdentifier": "openvscode-server",
-	"webviewContentExternalBaseUrlTemplate": "https://{{uuid}}.vscode-cdn.net/insider/ef65ac1ba57f57f2a3961bfe94aa20481caca4c6/out/vs/workbench/contrib/webview/browser/pre/",
+	"urlProtocol": "robothub-studio",
+	"embedderIdentifier": "robothub-studio",
+	"webviewContentExternalBaseUrlTemplate": "",
 	"extensionTips": {
 		"muhammad-sammy.csharp": "{**/*.cs,**/project.json,**/global.json,**/*.csproj,**/*.cshtml,**/*.sln,**/appsettings.json}",
 		"firefox-devtools.vscode-firefox-debug": "{**/*.ts,**/*.tsx,**/*.js,**/*.jsx,**/*.es6,**/.babelrc}",
@@ -164,88 +164,17 @@
 		}
 	},
 	"keymapExtensionTips": [
-		"vscodevim.vim",
-		"ms-vscode.sublime-keybindings",
-		"ms-vscode.atom-keybindings",
-		"ms-vscode.brackets-keybindings",
-		"ms-vscode.vs-keybindings",
-		"ms-vscode.notepadplusplus-keybindings",
-		"k--kato.intellij-idea-keybindings",
-		"lfs.vscode-emacs-friendly",
-		"alphabotsec.vscode-eclipse-keybindings",
-		"alefragnani.delphi-keybindings"
 	],
 	"languageExtensionTips": [
-		"ms-python.python",
-		"muhammad-sammy.csharp",
-		"ms-toolsai.jupyter",
-		"vscjava.vscode-java-pack",
-		"ecmel.vscode-html-css",
-		"vue.volar",
-		"bmewburn.vscode-intelephense-client",
-		"dsznajder.es7-react-js-snippets",
-		"golang.go",
-		"ms-vscode.powershell",
-		"dart-code.dart-code",
-		"rust-lang.rust-analyzer",
-		"rebornix.ruby"
+		"ms-python.python"
 	],
 	"configBasedExtensionTips": {
 		"git": {
 			"configPath": ".git/config",
 			"configName": "Git",
 			"recommendations": {
-				"github.vscode-pull-request-github": {
-					"name": "GitHub Pull Request",
-					"remotes": [
-						"github.com"
-					]
-				},
 				"eamodio.gitlens": {
 					"name": "GitLens"
-				}
-			}
-		},
-		"maven": {
-			"configPath": "pom.xml",
-			"configName": "Maven",
-			"recommendations": {
-				"vscjava.vscode-java-pack": {
-					"name": "Java",
-					"important": true,
-					"isExtensionPack": true,
-					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
-					]
-				},
-				"Pivotal.vscode-boot-dev-pack": {
-					"name": "Spring Boot Extension Pack",
-					"isExtensionPack": true
-				}
-			}
-		},
-		"gradle": {
-			"configPath": "build.gradle",
-			"configName": "Gradle",
-			"recommendations": {
-				"vscjava.vscode-java-pack": {
-					"name": "Java",
-					"important": true,
-					"isExtensionPack": true,
-					"whenNotInstalled": [
-						"ASF.apache-netbeans-java"
-					]
-				}
-			}
-		},
-		"github-pull-request": {
-			"configPath": ".vscode/.github-pull-request.rec",
-			"configName": "GitHub",
-			"configScheme": "vscode-vfs",
-			"recommendations": {
-				"github.vscode-pull-request-github": {
-					"name": "GitHub Pull Request",
-					"important": true
 				}
 			}
 		}
@@ -662,6 +591,8 @@
 		"publisherUrl": ""
 	},
 	"linkProtectionTrustedDomains": [
-		"https://open-vsx.org"
+		"https://open-vsx.org",
+		"https://luxonis.com",
+		"https://robothub.cloud"
 	]
 }
