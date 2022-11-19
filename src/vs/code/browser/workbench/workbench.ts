@@ -489,6 +489,7 @@ function doCreateUri(path: string, queryValues: Map<string, string>): URI {
 		});
 	}
 
+	path = (window.location.pathname + '/' + path).replace(/\/\/+/g, '/');
 	return URI.parse(window.location.href).with({ path, query });
 }
 
