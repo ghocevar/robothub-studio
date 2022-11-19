@@ -59,7 +59,6 @@ const compilations = [
 	'merge-conflict/tsconfig.json',
 	'microsoft-authentication/tsconfig.json',
 	'npm/tsconfig.json',
-	'php-language-features/tsconfig.json',
 	'search-result/tsconfig.json',
 	'references-view/tsconfig.json',
 	'simple-browser/tsconfig.json',
