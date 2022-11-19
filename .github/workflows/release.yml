@@ -1,0 +1,36 @@
+name: RobotHub Studio Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - luxonis/patches
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    name: Build and release
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - id: build
+        run: |
+          ./robothub/bundle.sh
+      - uses: actions/upload-artifact@v3
+        with:
+          name: robothub-studio-x86_64
+          path: robothub-studio-x86_64.tar.xz
+      - uses: actions/upload-artifact@v3
+        with:
+          name: robothub-studio-aarch64
+          path: robothub-studio-aarch64.tar.xz
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Release"
+          files: |
+            *.tar.xz
