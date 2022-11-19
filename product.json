@@ -38,45 +38,6 @@
 	"embedderIdentifier": "robothub-studio",
 	"webviewContentExternalBaseUrlTemplate": "",
 	"extensionTips": {
-		"muhammad-sammy.csharp": "{**/*.cs,**/project.json,**/global.json,**/*.csproj,**/*.cshtml,**/*.sln,**/appsettings.json}",
-		"firefox-devtools.vscode-firefox-debug": "{**/*.ts,**/*.tsx,**/*.js,**/*.jsx,**/*.es6,**/.babelrc}",
-		"ms-edgedevtools.vscode-edge-devtools": "{**/*.ts,**/*.tsx,**/*.js,**/*.css,**/*.html}",
-		"golang.Go": "**/*.go",
-		"ms-vscode.PowerShell": "{**/*.ps1,**/*.psd1,**/*.psm1,**/*.ps.config,**/*.ps1.config}",
-		"Ionide.Ionide-fsharp": "{**/*.fsx,**/*.fsi,**/*.fs,**/*.ml,**/*.mli}",
-		"dbaeumer.vscode-eslint": "{**/*.js,**/*.jsx,**/*.es6,**/.eslintrc.*,**/.eslintrc,**/.babelrc,**/jsconfig.json}",
-		"ms-vscode.vscode-typescript-tslint-plugin": "{**/tslint.json}",
-		"bmewburn.vscode-intelephense-client": "{**/*.php,**/php.ini}",
-		"xdebug.php-debug": "{**/*.php,**/php.ini}",
-		"rust-lang.rust-analyzer": "{**/*.rs,**/*.rslib}",
-		"DavidAnson.vscode-markdownlint": "{**/*.md}",
-		"ms-azuretools.vscode-docker": "{**/dockerfile,**/Dockerfile,**/docker-compose.yml,**/docker-compose.*.yml,**/*.cs,**/project.json,**/global.json,**/*.csproj,**/*.cshtml,**/*.sln,**/appsettings.json,**/*.py,**/*.ipynb,**/*.js,**/*.ts,**/package.json}",
-		"EditorConfig.EditorConfig": "{**/.editorconfig}",
-		"HookyQR.beautify": "{**/.jsbeautifyrc}",
-		"donjayamanne.githistory": "{**/.gitignore,**/.git}",
-		"felipecaputo.git-project-manager": "{**/.gitignore,**/.git}",
-		"eamodio.gitlens": "{**/.gitignore,**/.git}",
-		"rebornix.Ruby": "{**/*.rb,**/*.erb,**/*.reek,**/.fasterer.yml,**/ruby-lint.yml,**/.rubocop.yml}",
-		"DotJoshJohnson.xml": "{**/*.xml}",
-		"stylelint.vscode-stylelint": "{**/.stylelintrc,**/stylelint.config.js}",
-		"ms-mssql.mssql": "{**/*.sql}",
-		"mtxr.sqltools": "{**/*.sql}",
-		"ms-vscode.sublime-keybindings": "{**/.sublime-project,**/.sublime-workspace}",
-		"k--kato.intellij-idea-keybindings": "{**/.idea}",
-		"christian-kohler.npm-intellisense": "{**/package.json}",
-		"vue.volar": "{**/*.vue}",
-		"ms-python.python": "{**/*.py,**/*.ipynb}",
-		"ms-toolsai.jupyter": "{**/*.ipynb}",
-		"cake-build.cake-vscode": "{**/build.cake}",
-		"Angular.ng-template": "{**/.angular-cli.json,**/angular.json,**/*.ng.html,**/*.ng,**/*.ngml}",
-		"vscjava.vscode-maven": "**/pom.xml",
-		"HashiCorp.terraform": "**/*.tf",
-		"vsciot-vscode.vscode-arduino": "**/*.ino",
-		"ms-kubernetes-tools.vscode-kubernetes-tools": "{**/Chart.yaml}",
-		"GoogleCloudTools.cloudcode": "{**/skaffold.yaml}",
-		"Oracle.oracledevtools": "{**/*.sql}",
-		"ms-vscode.vscode-github-issue-notebooks": "{**/*.github-issues}",
-		"REditorSupport.r": "**/*.r"
 	},
 	"extensionImportantTips": {
 		"muhammad-sammy.csharp": {
@@ -166,7 +127,6 @@
 	"keymapExtensionTips": [
 	],
 	"languageExtensionTips": [
-		"ms-python.python"
 	],
 	"configBasedExtensionTips": {
 		"git": {
