@@ -17,6 +17,7 @@ jobs:
           node-version: 16
       - id: build
         run: |
+          yarn install
           ./robothub/bundle.sh
       - uses: actions/upload-artifact@v3
         with:
