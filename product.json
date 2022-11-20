@@ -40,104 +40,12 @@
 	"extensionTips": {
 	},
 	"extensionImportantTips": {
-		"muhammad-sammy.csharp": {
-			"name": "C#",
-			"languages": [
-				"csharp"
-			],
-			"pattern": "{**/*.cs,**/global.json,**/*.csproj,**/*.cshtml,**/*.sln}"
-		},
-		"ms-python.python": {
-			"name": "Python",
-			"languages": [
-				"python"
-			],
-			"pattern": "{**/*.py}"
-		},
-		"golang.Go": {
-			"name": "Go",
-			"languages": [
-				"go"
-			],
-			"pattern": "**/*.go"
-		},
-		"vscjava.vscode-java-pack": {
-			"name": "Java",
-			"languages": [
-				"java"
-			],
-			"pattern": "{**/*.java}",
-			"isExtensionPack": true,
-			"whenNotInstalled": [
-				"ASF.apache-netbeans-java"
-			]
-		},
-		"ms-vscode.PowerShell": {
-			"name": "PowerShell",
-			"languages": [
-				"powershell"
-			],
-			"pattern": "{**/*.ps1,**/*.psd1,**/*.psm1}"
-		},
-		"ms-azuretools.vscode-docker": {
-			"name": "Docker",
-			"languages": [
-				"dockerfile"
-			],
-			"pattern": "{**/dockerfile,**/Dockerfile,**/docker-compose.yml,**/docker-compose.*.yml}"
-		},
-		"vue.volar": {
-			"name": "Vetur",
-			"languages": [
-				"vue"
-			],
-			"pattern": "{**/*.vue}"
-		},
-		"ms-vscode.makefile-tools": {
-			"name": "Makefile Tools",
-			"languages": [
-				"makefile"
-			],
-			"pattern": "{**/makefile,**/Makefile}"
-		},
-		"ms-vscode.cmake-tools": {
-			"name": "CMake Tools",
-			"pattern": "{**/CMakeLists.txt}"
-		},
-		"svelte.svelte-vscode": {
-			"name": "Svelte",
-			"pattern": "{**/*.svelte}"
-		},
-		"ms-vscode.vscode-github-issue-notebooks": {
-			"name": "GitHub Issue Notebooks",
-			"pattern": "{**/*.github-issues}"
-		},
-		"ms-playwright.playwright": {
-			"name": "Playwright",
-			"pattern": "{**/*playwright*.config.ts,**/*playwright*.config.js,**/*playwright*.config.mjs}"
-		},
-		"REditorSupport.r": {
-			"name": "R",
-			"languages": [
-				"r"
-			],
-			"pattern": "{**/*.r}"
-		}
 	},
 	"keymapExtensionTips": [
 	],
 	"languageExtensionTips": [
 	],
 	"configBasedExtensionTips": {
-		"git": {
-			"configPath": ".git/config",
-			"configName": "Git",
-			"recommendations": {
-				"eamodio.gitlens": {
-					"name": "GitLens"
-				}
-			}
-		}
 	},
 	"extensionKeywords": {
 		"md": [
@@ -496,49 +404,14 @@
 	},
 	"builtInExtensions": [
 		{
-			"name": "ms-vscode.js-debug-companion",
-			"version": "1.0.18",
-			"repo": "https://github.com/microsoft/vscode-js-debug-companion",
-			"metadata": {
-				"id": "99cb0b7f-7354-4278-b8da-6cc79972169d",
-				"publisherId": {
-					"publisherId": "5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee",
-					"publisherName": "ms-vscode",
-					"displayName": "Microsoft",
-					"flags": "verified"
-				},
-				"publisherDisplayName": "Microsoft"
-			}
+			"name": "redhat.vscode-yaml",
+			"version": "1.10.1",
+			"repo": "https://github.com/redhat-developer/vscode-yaml"
 		},
 		{
-			"name": "ms-vscode.js-debug",
-			"version": "1.72.1",
-			"repo": "https://github.com/microsoft/vscode-js-debug",
-			"metadata": {
-				"id": "25629058-ddac-4e17-abba-74678e126c5d",
-				"publisherId": {
-					"publisherId": "5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee",
-					"publisherName": "ms-vscode",
-					"displayName": "Microsoft",
-					"flags": "verified"
-				},
-				"publisherDisplayName": "Microsoft"
-			}
-		},
-		{
-			"name": "ms-vscode.vscode-js-profile-table",
-			"version": "1.0.3",
-			"repo": "https://github.com/microsoft/vscode-js-profile-visualizer",
-			"metadata": {
-				"id": "7e52b41b-71ad-457b-ab7e-0620f1fc4feb",
-				"publisherId": {
-					"publisherId": "5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee",
-					"publisherName": "ms-vscode",
-					"displayName": "Microsoft",
-					"flags": "verified"
-				},
-				"publisherDisplayName": "Microsoft"
-			}
+			"name": "ms-python.python",
+			"version": "2022.18.2",
+			"repo": "https://github.com/Microsoft/vscode-python.git"
 		}
 	],
 	"extensionsGallery": {
