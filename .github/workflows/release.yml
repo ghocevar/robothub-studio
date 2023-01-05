@@ -38,7 +38,10 @@ jobs:
           path: robothub-studio-${{ matrix.arch }}.tar.xz
 
   upload-release:
-    runs_on: buildjet-4vcpu-ubuntu-2204
+    if: ${{ always() && needs.build.result == 'success' }}
+    runs-on: buildjet-4vcpu-ubuntu-2204
+    needs:
+      - build
     steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
