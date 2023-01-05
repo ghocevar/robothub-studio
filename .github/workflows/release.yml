@@ -27,20 +27,20 @@ jobs:
           node-version: 16
       - id: build
         env:
-          CODE_ARCH: ${{ runner.codeArch }}
-          LINUX_ARCH: ${{ runner.arch }}
+          CODE_ARCH: ${{ matrix.codeArch }}
+          LINUX_ARCH: ${{ matrix.arch }}
         run: |
           yarn install
           ./robothub/bundle.sh
       - uses: actions/upload-artifact@v3
         with:
-          name: robothub-studio-${{ runner.arch }}
-          path: robothub-studio-${{ runner.arch }}.tar.xz
+          name: robothub-studio-${{ matrix.arch }}
+          path: robothub-studio-${{ matrix.arch }}.tar.xz
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest/${{ runner.arch }}"
+          automatic_release_tag: "latest/${{ matrix.arch }}"
           prerelease: false
-          title: "Release ${{ runner.arch }}"
+          title: "Release ${{ matrix.arch }}"
           files: |
             *.tar.xz
