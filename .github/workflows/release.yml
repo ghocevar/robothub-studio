@@ -7,7 +7,7 @@ on:
       - luxonis/patches
 
 jobs:
-  build-and-release:
+  build:
     strategy:
       matrix:
         os: [buildjet-8vcpu-ubuntu-2204, buildjet-8vcpu-ubuntu-2204-arm]
@@ -36,11 +36,18 @@ jobs:
         with:
           name: robothub-studio-${{ matrix.arch }}
           path: robothub-studio-${{ matrix.arch }}.tar.xz
+
+  upload-release:
+    runs_on: buildjet-4vcpu-ubuntu-2204
+    steps:
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest/${{ matrix.arch }}"
+          automatic_release_tag: "latest"
           prerelease: false
-          title: "Release ${{ matrix.arch }}"
+          title: "Release"
           files: |
-            *.tar.xz
+            **/*.tar.xz
