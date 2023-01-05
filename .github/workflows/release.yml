@@ -8,7 +8,17 @@ on:
 
 jobs:
   build-and-release:
-    runs-on: buildjet-8vcpu-ubuntu-2204
+    strategy:
+      matrix:
+        os: [buildjet-8vcpu-ubuntu-2204, buildjet-8vcpu-ubuntu-2204-arm]
+        include:
+          - os: buildjet-8vcpu-ubuntu-2204
+            arch: x86_64
+            codeArch: x64
+          - os: buildjet-8vcpu-ubuntu-2204-arm
+            arch: aarch64
+            codeArch: arm64
+    runs-on: ${{ matrix.os }}
     name: Build and release
     steps:
       - uses: actions/checkout@v3
@@ -16,22 +26,21 @@ jobs:
         with:
           node-version: 16
       - id: build
+        env:
+          CODE_ARCH: ${{ runner.codeArch }}
+          LINUX_ARCH: ${{ runner.arch }}
         run: |
           yarn install
           ./robothub/bundle.sh
       - uses: actions/upload-artifact@v3
         with:
-          name: robothub-studio-x86_64
-          path: robothub-studio-x86_64.tar.xz
-      - uses: actions/upload-artifact@v3
-        with:
-          name: robothub-studio-aarch64
-          path: robothub-studio-aarch64.tar.xz
+          name: robothub-studio-${{ runner.arch }}
+          path: robothub-studio-${{ runner.arch }}.tar.xz
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
+          automatic_release_tag: "latest/${{ runner.arch }}"
           prerelease: false
-          title: "Release"
+          title: "Release ${{ runner.arch }}"
           files: |
             *.tar.xz

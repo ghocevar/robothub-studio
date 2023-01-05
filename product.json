@@ -410,8 +410,13 @@
 		},
 		{
 			"name": "ms-python.python",
-			"version": "2022.18.2",
+			"version": "2022.20.1",
 			"repo": "https://github.com/Microsoft/vscode-python.git"
+		},
+		{
+			"name": "KevinRose.vsc-python-indent",
+			"version": "1.18.0",
+			"repo": "https://github.com/kbrose/vsc-python-indent.git"
 		}
 	],
 	"extensionsGallery": {
