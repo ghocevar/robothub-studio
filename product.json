@@ -409,6 +409,11 @@
 			"repo": "https://github.com/redhat-developer/vscode-yaml"
 		},
 		{
+			"name": "tamasfe.even-better-toml",
+			"version": "0.19.0",
+			"repo": "https://github.com/tamasfe/taplo"
+		},
+		{
 			"name": "ms-python.python",
 			"version": "2022.20.1",
 			"repo": "https://github.com/Microsoft/vscode-python.git"
