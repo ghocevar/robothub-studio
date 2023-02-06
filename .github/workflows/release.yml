@@ -1,0 +1,56 @@
+name: RobotHub Studio Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - luxonis/patches
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [buildjet-8vcpu-ubuntu-2204, buildjet-8vcpu-ubuntu-2204-arm]
+        include:
+          - os: buildjet-8vcpu-ubuntu-2204
+            arch: x86_64
+            codeArch: x64
+          - os: buildjet-8vcpu-ubuntu-2204-arm
+            arch: aarch64
+            codeArch: arm64
+    runs-on: ${{ matrix.os }}
+    name: Build and release
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - id: build
+        env:
+          CODE_ARCH: ${{ matrix.codeArch }}
+          LINUX_ARCH: ${{ matrix.arch }}
+        run: |
+          yarn install
+          ./robothub/bundle.sh
+      - uses: actions/upload-artifact@v3
+        with:
+          name: robothub-studio-${{ matrix.arch }}
+          path: robothub-studio-${{ matrix.arch }}.tar.xz
+
+  upload-release:
+    if: ${{ always() && needs.build.result == 'success' }}
+    runs-on: buildjet-4vcpu-ubuntu-2204
+    needs:
+      - build
+    steps:
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Release"
+          files: |
+            **/*.tar.xz
