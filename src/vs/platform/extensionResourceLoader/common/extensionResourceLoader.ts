@@ -16,7 +16,6 @@ import { getServiceMachineId } from 'vs/platform/externalServices/common/service
 import { IStorageService } from 'vs/platform/storage/common/storage';
 import { TelemetryLevel } from 'vs/platform/telemetry/common/telemetry';
 import { getTelemetryLevel, supportsTelemetry } from 'vs/platform/telemetry/common/telemetryUtils';
-import { RemoteAuthorities } from 'vs/base/common/network';
 import { getRemoteServerRootPath } from 'vs/platform/remote/common/remoteHosts';
 
 const WEB_EXTENSION_RESOURCE_END_POINT = 'web-extension-resource';
