@@ -8,6 +8,7 @@ START_DIR="$(pwd)"
 cd ..
 
 mv vscode-reh-web-linux-${CODE_ARCH} robothub-studio-${LINUX_ARCH}
+cp /usr/bin/git robothub-studio-${LINUX_ARCH}/bin/
 
 tar cfJ robothub-studio-${LINUX_ARCH}.tar.xz robothub-studio-${LINUX_ARCH}
 rm -rf robothub-studio-${LINUX_ARCH}
