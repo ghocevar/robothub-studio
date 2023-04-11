@@ -9,7 +9,7 @@ export interface IBuiltInExtension {
 	readonly name: string;
 	readonly version: string;
 	readonly repo: string;
-	readonly metadata: any;
+	readonly metadata?: any;
 }
 
 export type ConfigurationSyncStore = {
