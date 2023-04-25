@@ -78,19 +78,13 @@ import { getTelemetryLevel } from 'vs/platform/telemetry/common/telemetryUtils';
 import { WorkbenchStateContext } from 'vs/workbench/common/contextkeys';
 import { OpenFolderViaWorkspaceAction } from 'vs/workbench/browser/actions/workspaceActions';
 import { OpenRecentAction } from 'vs/workbench/browser/actions/windowActions';
-// import { Toggle } from 'vs/base/browser/ui/toggle/toggle';
-// import { Codicon } from 'vs/base/common/codicons';
 import { restoreWalkthroughsConfigurationKey, RestoreWalkthroughsConfigurationValue } from 'vs/workbench/contrib/welcomeGettingStarted/browser/startupPage';
 import { GettingStartedDetailsRenderer } from 'vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedDetailsRenderer';
 import { IAccessibilityService } from 'vs/platform/accessibility/common/accessibility';
 import { renderLabelWithIcons } from 'vs/base/browser/ui/iconLabel/iconLabels';
-import {
-	defaultButtonStyles,
-	// defaultToggleStyles
-} from 'vs/platform/theme/browser/defaultStyles';
+import { defaultButtonStyles } from 'vs/platform/theme/browser/defaultStyles';
 
 const SLIDE_TRANSITION_TIME_MS = 250;
-// const configurationKey = 'workbench.startupEditor';
 
 export const allWalkthroughsHiddenContext = new RawContextKey<boolean>('allWalkthroughsHidden', false);
 export const inWelcomeContext = new RawContextKey<boolean>('inWelcome', false);
@@ -105,16 +99,6 @@ export interface IWelcomePageStartEntry {
 	icon: { type: 'icon'; icon: ThemeIcon };
 	when: ContextKeyExpression;
 }
-
-// const parsedStartEntries: IWelcomePageStartEntry[] = startEntries.map((e, i) => ({
-// 	command: e.content.command,
-// 	description: e.description,
-// 	icon: { type: 'icon', icon: e.icon },
-// 	id: e.id,
-// 	order: i,
-// 	title: e.title,
-// 	when: ContextKeyExpr.deserialize(e.when) ?? ContextKeyExpr.true()
-// }));
 
 type GettingStartedActionClassification = {
 	command: { classification: 'PublicNonPersonalData'; purpose: 'FeatureInsight'; comment: 'The command being executed on the getting started page.' };
@@ -222,26 +206,6 @@ export class GettingStartedPage extends EditorPane {
 
 		this.gettingStartedCategories = this.gettingStartedService.getWalkthroughs();
 		this._register(this.dispatchListeners);
-		// this.buildSlideThrottle = new Throttler();
-
-		// const rerender = () => {
-		// 	this.gettingStartedCategories = this.gettingStartedService.getWalkthroughs();
-		// 	if (this.currentWalkthrough) {
-		// 		const existingSteps = this.currentWalkthrough.steps.map(step => step.id);
-		// 		const newCategory = this.gettingStartedCategories.find(category => this.currentWalkthrough?.id === category.id);
-		// 		if (newCategory) {
-		// 			const newSteps = newCategory.steps.map(step => step.id);
-		// 			if (!equals(newSteps, existingSteps)) {
-		// 				this.buildSlideThrottle.queue(() => this.buildCategoriesSlide());
-		// 			}
-		// 		}
-		// 	} else {
-		// 		this.buildSlideThrottle.queue(() => this.buildCategoriesSlide());
-		// 	}
-		// };
-
-		// this._register(this.gettingStartedService.onDidAddWalkthrough(rerender));
-		// this._register(this.gettingStartedService.onDidRemoveWalkthrough(rerender));
 
 		this._register(this.gettingStartedService.onDidChangeWalkthrough(category => {
 			const ourCategory = this.gettingStartedCategories.find(c => c.id === category.id);
@@ -291,12 +255,6 @@ export class GettingStartedPage extends EditorPane {
 			}
 			this.updateCategoryProgress();
 		}));
-
-		// this.recentlyOpened = workspacesService.getRecentlyOpened();
-		// this._register(workspacesService.onDidChangeRecentlyOpened(() => {
-		// 	this.recentlyOpened = workspacesService.getRecentlyOpened();
-		// 	rerender();
-		// }));
 	}
 
 	// remove when 'workbench.welcomePage.preferReducedMotion' deprecated
@@ -718,331 +676,11 @@ export class GettingStartedPage extends EditorPane {
 	}
 
 	protected createEditor(parent: HTMLElement) {
-		const iframe = $('iframe', { src: 'https://www.luxonis.com/', frameborder: '0', allowfullscreen: 'true', height: '100%', width: '100%' });
+		const iframe = $('iframe', { src: 'https://localhost:9010/get-started', frameborder: '0', allowfullscreen: 'true', height: '100%', width: '100%' });
 		this.container.appendChild(iframe);
 
 		parent.appendChild(this.container);
 	}
-
-	// private async buildCategoriesSlide() {
-	// 	this.categoriesSlideDisposables.clear();
-	// 	const showOnStartupCheckbox = new Toggle({
-	// 		icon: Codicon.check,
-	// 		actionClassName: 'getting-started-checkbox',
-	// 		isChecked: this.configurationService.getValue(configurationKey) === 'welcomePage',
-	// 		title: localize('checkboxTitle', "When checked, this page will be shown on startup."),
-	// 		...defaultToggleStyles
-	// 	});
-	// 	showOnStartupCheckbox.domNode.id = 'showOnStartup';
-	// 	const showOnStartupLabel = $('label.caption', { for: 'showOnStartup' }, localize('welcomePage.showOnStartup', "Show welcome page on startup"));
-	// 	const onShowOnStartupChanged = () => {
-	// 		if (showOnStartupCheckbox.checked) {
-	// 			this.telemetryService.publicLog2<GettingStartedActionEvent, GettingStartedActionClassification>('gettingStarted.ActionExecuted', { command: 'showOnStartupChecked', argument: undefined, walkthroughId: this.currentWalkthrough?.id });
-	// 			this.configurationService.updateValue(configurationKey, 'welcomePage');
-	// 		} else {
-	// 			this.telemetryService.publicLog2<GettingStartedActionEvent, GettingStartedActionClassification>('gettingStarted.ActionExecuted', { command: 'showOnStartupUnchecked', argument: undefined, walkthroughId: this.currentWalkthrough?.id });
-	// 			this.configurationService.updateValue(configurationKey, 'none');
-	// 		}
-	// 	};
-	// 	this.categoriesSlideDisposables.add(showOnStartupCheckbox);
-	// 	this.categoriesSlideDisposables.add(showOnStartupCheckbox.onChange(() => {
-	// 		onShowOnStartupChanged();
-	// 	}));
-	// 	this.categoriesSlideDisposables.add(addDisposableListener(showOnStartupLabel, 'click', () => {
-	// 		showOnStartupCheckbox.checked = !showOnStartupCheckbox.checked;
-	// 		onShowOnStartupChanged();
-	// 	}));
-
-	// 	const header = $('.header', {},
-	// 		$('h1.product-name.caption', {}, this.productService.nameLong),
-	// 		$('p.subtitle.description', {}, localize({ key: 'gettingStarted.editingEvolved', comment: ['Shown as subtitle on the Welcome page.'] }, "Editing evolved"))
-	// 	);
-
-
-	// 	const leftColumn = $('.categories-column.categories-column-left', {},);
-	// 	const rightColumn = $('.categories-column.categories-column-right', {},);
-
-	// 	const startList = this.buildStartList();
-	// 	const recentList = this.buildRecentlyOpenedList();
-	// 	const gettingStartedList = this.buildGettingStartedWalkthroughsList();
-
-	// 	const footer = $('.footer', {},
-	// 		$('p.showOnStartup', {},
-	// 			showOnStartupCheckbox.domNode,
-	// 			showOnStartupLabel,
-	// 		));
-
-	// 	const layoutLists = () => {
-	// 		if (gettingStartedList.itemCount) {
-	// 			this.container.classList.remove('noWalkthroughs');
-	// 			reset(leftColumn, startList.getDomElement(), recentList.getDomElement());
-	// 			reset(rightColumn, gettingStartedList.getDomElement());
-	// 			recentList.setLimit(5);
-	// 		}
-	// 		else {
-	// 			this.container.classList.add('noWalkthroughs');
-	// 			reset(leftColumn, startList.getDomElement());
-	// 			reset(rightColumn, recentList.getDomElement());
-	// 			recentList.setLimit(10);
-	// 		}
-	// 		setTimeout(() => this.categoriesPageScrollbar?.scanDomNode(), 50);
-	// 	};
-
-	// 	gettingStartedList.onDidChange(layoutLists);
-	// 	layoutLists();
-
-	// 	reset(this.categoriesSlide, $('.gettingStartedCategoriesContainer', {}, header, leftColumn, rightColumn, footer,));
-	// 	this.categoriesPageScrollbar?.scanDomNode();
-
-	// 	this.updateCategoryProgress();
-	// 	this.registerDispatchListeners();
-
-	// 	if (this.editorInput.selectedCategory) {
-	// 		this.currentWalkthrough = this.gettingStartedCategories.find(category => category.id === this.editorInput.selectedCategory);
-
-	// 		if (!this.currentWalkthrough) {
-	// 			this.container.classList.add('loading');
-	// 			await this.gettingStartedService.installedExtensionsRegistered;
-	// 			this.container.classList.remove('loading');
-	// 			this.gettingStartedCategories = this.gettingStartedService.getWalkthroughs();
-	// 			this.currentWalkthrough = this.gettingStartedCategories.find(category => category.id === this.editorInput.selectedCategory);
-	// 		}
-
-	// 		if (!this.currentWalkthrough) {
-	// 			console.error('Could not restore to category ' + this.editorInput.selectedCategory + ' as it was not found');
-	// 			this.editorInput.selectedCategory = undefined;
-	// 			this.editorInput.selectedStep = undefined;
-	// 		} else {
-	// 			this.buildCategorySlide(this.editorInput.selectedCategory, this.editorInput.selectedStep);
-	// 			this.setSlide('details');
-	// 			return;
-	// 		}
-	// 	}
-
-	// 	const someStepsComplete = this.gettingStartedCategories.some(category => category.steps.find(s => s.done));
-	// 	if (this.editorInput.showTelemetryNotice && this.productService.openToWelcomeMainPage) {
-	// 		const telemetryNotice = $('p.telemetry-notice');
-	// 		this.buildTelemetryFooter(telemetryNotice);
-	// 		footer.appendChild(telemetryNotice);
-	// 	} else if (!this.productService.openToWelcomeMainPage && !someStepsComplete && !this.hasScrolledToFirstCategory) {
-	// 		const firstSessionDateString = this.storageService.get(firstSessionDateStorageKey, StorageScope.APPLICATION) || new Date().toUTCString();
-	// 		const daysSinceFirstSession = ((+new Date()) - (+new Date(firstSessionDateString))) / 1000 / 60 / 60 / 24;
-	// 		const fistContentBehaviour = daysSinceFirstSession < 1 ? 'openToFirstCategory' : 'index';
-
-	// 		if (fistContentBehaviour === 'openToFirstCategory') {
-	// 			const first = this.gettingStartedCategories.filter(c => !c.when || this.contextService.contextMatchesRules(c.when))[0];
-	// 			this.hasScrolledToFirstCategory = true;
-	// 			if (first) {
-	// 				this.currentWalkthrough = first;
-	// 				this.editorInput.selectedCategory = this.currentWalkthrough?.id;
-	// 				this.buildCategorySlide(this.editorInput.selectedCategory, undefined);
-	// 				this.setSlide('details');
-	// 				return;
-	// 			}
-	// 		}
-	// 	}
-
-	// 	this.setSlide('categories');
-	// }
-
-	// private buildRecentlyOpenedList(): GettingStartedIndexList<RecentEntry> {
-	// 	const renderRecent = (recent: RecentEntry) => {
-	// 		let fullPath: string;
-	// 		let windowOpenable: IWindowOpenable;
-	// 		if (isRecentFolder(recent)) {
-	// 			windowOpenable = { folderUri: recent.folderUri };
-	// 			fullPath = recent.label || this.labelService.getWorkspaceLabel(recent.folderUri, { verbose: Verbosity.LONG });
-	// 		} else {
-	// 			fullPath = recent.label || this.labelService.getWorkspaceLabel(recent.workspace, { verbose: Verbosity.LONG });
-	// 			windowOpenable = { workspaceUri: recent.workspace.configPath };
-	// 		}
-
-	// 		const { name, parentPath } = splitName(fullPath);
-
-	// 		const li = $('li');
-	// 		const link = $('button.button-link');
-
-	// 		link.innerText = name;
-	// 		link.title = fullPath;
-	// 		link.setAttribute('aria-label', localize('welcomePage.openFolderWithPath', "Open folder {0} with path {1}", name, parentPath));
-	// 		link.addEventListener('click', e => {
-	// 			this.telemetryService.publicLog2<GettingStartedActionEvent, GettingStartedActionClassification>('gettingStarted.ActionExecuted', { command: 'openRecent', argument: undefined, walkthroughId: this.currentWalkthrough?.id });
-	// 			this.hostService.openWindow([windowOpenable], {
-	// 				forceNewWindow: e.ctrlKey || e.metaKey,
-	// 				remoteAuthority: recent.remoteAuthority || null // local window if remoteAuthority is not set or can not be deducted from the openable
-	// 			});
-	// 			e.preventDefault();
-	// 			e.stopPropagation();
-	// 		});
-	// 		li.appendChild(link);
-
-	// 		const span = $('span');
-	// 		span.classList.add('path');
-	// 		span.classList.add('detail');
-	// 		span.innerText = parentPath;
-	// 		span.title = fullPath;
-	// 		li.appendChild(span);
-
-	// 		return li;
-	// 	};
-
-	// 	if (this.recentlyOpenedList) { this.recentlyOpenedList.dispose(); }
-
-	// 	const recentlyOpenedList = this.recentlyOpenedList = new GettingStartedIndexList(
-	// 		{
-	// 			title: localize('recent', "Recent"),
-	// 			klass: 'recently-opened',
-	// 			limit: 5,
-	// 			empty: $('.empty-recent', {},
-	// 				localize('noRecents', "You have no recent folders,"),
-	// 				$('button.button-link', { 'x-dispatch': 'openFolder' }, localize('openFolder', "open a folder")),
-	// 				localize('toStart', "to start.")),
-
-	// 			more: $('.more', {},
-	// 				$('button.button-link',
-	// 					{
-	// 						'x-dispatch': 'showMoreRecents',
-	// 						title: localize('show more recents', "Show All Recent Folders {0}", this.getKeybindingLabel(OpenRecentAction.ID))
-	// 					}, localize('showAll', "More..."))),
-	// 			renderElement: renderRecent,
-	// 			contextService: this.contextService
-	// 		});
-
-	// 	recentlyOpenedList.onDidChange(() => this.registerDispatchListeners());
-
-	// 	this.recentlyOpened.then(({ workspaces }) => {
-	// 		// Filter out the current workspace
-	// 		const workspacesWithID = workspaces
-	// 			.filter(recent => !this.workspaceContextService.isCurrentWorkspace(isRecentWorkspace(recent) ? recent.workspace : recent.folderUri))
-	// 			.map(recent => ({ ...recent, id: isRecentWorkspace(recent) ? recent.workspace.id : recent.folderUri.toString() }));
-
-	// 		const updateEntries = () => {
-	// 			recentlyOpenedList.setEntries(workspacesWithID);
-	// 		};
-
-	// 		updateEntries();
-
-	// 		recentlyOpenedList.register(this.labelService.onDidChangeFormatters(() => updateEntries()));
-	// 	}).catch(onUnexpectedError);
-
-	// 	return recentlyOpenedList;
-	// }
-
-	// private buildStartList(): GettingStartedIndexList<IWelcomePageStartEntry> {
-	// 	const renderStartEntry = (entry: IWelcomePageStartEntry): HTMLElement =>
-	// 		$('li',
-	// 			{}, $('button.button-link',
-	// 				{
-	// 					'x-dispatch': 'selectStartEntry:' + entry.id,
-	// 					title: entry.description + ' ' + this.getKeybindingLabel(entry.command),
-	// 				},
-	// 				this.iconWidgetFor(entry),
-	// 				$('span', {}, entry.title)));
-
-	// 	if (this.startList) { this.startList.dispose(); }
-
-	// 	const startList = this.startList = new GettingStartedIndexList(
-	// 		{
-	// 			title: localize('start', "Start"),
-	// 			klass: 'start-container',
-	// 			limit: 10,
-	// 			renderElement: renderStartEntry,
-	// 			rankElement: e => -e.order,
-	// 			contextService: this.contextService
-	// 		});
-
-	// 	startList.setEntries(parsedStartEntries);
-	// 	startList.onDidChange(() => this.registerDispatchListeners());
-	// 	return startList;
-	// }
-
-	// private buildGettingStartedWalkthroughsList(): GettingStartedIndexList<IResolvedWalkthrough> {
-
-	// 	const renderGetttingStaredWalkthrough = (category: IResolvedWalkthrough): HTMLElement => {
-
-	// 		const renderNewBadge = (category.newItems || category.newEntry) && !category.isFeatured;
-	// 		const newBadge = $('.new-badge', {});
-	// 		if (category.newEntry) {
-	// 			reset(newBadge, $('.new-category', {}, localize('new', "New")));
-	// 		} else if (category.newItems) {
-	// 			reset(newBadge, $('.new-items', {}, localize({ key: 'newItems', comment: ['Shown when a list of items has changed based on an update from a remote source'] }, "Updated")));
-	// 		}
-
-	// 		const featuredBadge = $('.featured-badge', {});
-	// 		const descriptionContent = $('.description-content', {},);
-
-	// 		if (category.isFeatured) {
-	// 			reset(featuredBadge, $('.featured', {}, $('span.featured-icon.codicon.codicon-star-full')));
-	// 			reset(descriptionContent, ...renderLabelWithIcons(category.description));
-	// 		}
-
-	// 		const titleContent = $('h3.category-title.max-lines-3', { 'x-category-title-for': category.id });
-	// 		reset(titleContent, ...renderLabelWithIcons(category.title));
-
-	// 		return $('button.getting-started-category' + (category.isFeatured ? '.featured' : ''),
-	// 			{
-	// 				'x-dispatch': 'selectCategory:' + category.id,
-	// 				'title': category.description
-	// 			},
-	// 			featuredBadge,
-	// 			$('.main-content', {},
-	// 				this.iconWidgetFor(category),
-	// 				titleContent,
-	// 				renderNewBadge ? newBadge : $('.no-badge'),
-	// 				$('a.codicon.codicon-close.hide-category-button', {
-	// 					'tabindex': 0,
-	// 					'x-dispatch': 'hideCategory:' + category.id,
-	// 					'title': localize('close', "Hide"),
-	// 					'role': 'button',
-	// 					'aria-label': localize('closeAriaLabel', "Hide"),
-	// 				}),
-	// 			),
-	// 			descriptionContent,
-	// 			$('.category-progress', { 'x-data-category-id': category.id, },
-	// 				$('.progress-bar-outer', { 'role': 'progressbar' },
-	// 					$('.progress-bar-inner'))));
-	// 	};
-
-	// 	if (this.gettingStartedList) { this.gettingStartedList.dispose(); }
-
-	// 	const rankWalkthrough = (e: IResolvedWalkthrough) => {
-	// 		let rank: number | null = e.order;
-
-	// 		if (e.isFeatured) { rank += 7; }
-	// 		if (e.newEntry) { rank += 3; }
-	// 		if (e.newItems) { rank += 2; }
-	// 		if (e.recencyBonus) { rank += 4 * e.recencyBonus; }
-
-	// 		if (this.getHiddenCategories().has(e.id)) { rank = null; }
-	// 		return rank;
-	// 	};
-
-	// 	const gettingStartedList = this.gettingStartedList = new GettingStartedIndexList(
-	// 		{
-	// 			title: localize('walkthroughs', "Walkthroughs"),
-	// 			klass: 'getting-started',
-	// 			limit: 5,
-	// 			footer: $('span.button-link.see-all-walkthroughs', { 'x-dispatch': 'seeAllWalkthroughs', 'tabindex': 0 }, localize('showAll', "More...")),
-	// 			renderElement: renderGetttingStaredWalkthrough,
-	// 			rankElement: rankWalkthrough,
-	// 			contextService: this.contextService,
-	// 		});
-
-	// 	gettingStartedList.onDidChange(() => {
-	// 		const hidden = this.getHiddenCategories();
-	// 		const someWalkthroughsHidden = hidden.size || gettingStartedList.itemCount < this.gettingStartedCategories.filter(c => this.contextService.contextMatchesRules(c.when)).length;
-	// 		this.container.classList.toggle('someWalkthroughsHidden', !!someWalkthroughsHidden);
-	// 		this.registerDispatchListeners();
-	// 		allWalkthroughsHiddenContext.bindTo(this.contextService).set(gettingStartedList.itemCount === 0);
-	// 		this.updateCategoryProgress();
-	// 	});
-
-	// 	gettingStartedList.setEntries(this.gettingStartedCategories);
-	// 	allWalkthroughsHiddenContext.bindTo(this.contextService).set(gettingStartedList.itemCount === 0);
-
-
-	// 	return gettingStartedList;
-	// }
 
 	layout(size: Dimension) {
 		this.detailsScrollbar?.scanDomNode();
