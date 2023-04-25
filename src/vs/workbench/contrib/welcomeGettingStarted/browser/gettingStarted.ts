@@ -17,10 +17,7 @@ import { hiddenEntriesConfigurationKey, IResolvedWalkthrough, IResolvedWalkthrou
 import { IThemeService } from 'vs/platform/theme/common/themeService';
 import { ThemeIcon } from 'vs/base/common/themables';
 import { IKeybindingService } from 'vs/platform/keybinding/common/keybinding';
-import {
-	// firstSessionDateStorageKey,
-	ITelemetryService, TelemetryLevel
-} from 'vs/platform/telemetry/common/telemetry';
+import { ITelemetryService, TelemetryLevel } from 'vs/platform/telemetry/common/telemetry';
 import { DomScrollableElement } from 'vs/base/browser/ui/scrollbar/scrollableElement';
 import { gettingStartedCheckedCodicon, gettingStartedUncheckedCodicon } from 'vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedIcons';
 import { IOpenerService, matchesScheme } from 'vs/platform/opener/common/opener';
@@ -30,27 +27,10 @@ import { IStorageService, StorageScope, StorageTarget } from 'vs/platform/storag
 import { CancellationToken } from 'vs/base/common/cancellation';
 import { ConfigurationTarget, IConfigurationService } from 'vs/platform/configuration/common/configuration';
 import { ContextKeyExpr, ContextKeyExpression, IContextKeyService, RawContextKey } from 'vs/platform/contextkey/common/contextkey';
-import {
-	IRecentFolder,
-	// IRecentlyOpened,
-	IRecentWorkspace,
-	// isRecentFolder, isRecentWorkspace,
-	IWorkspacesService
-} from 'vs/platform/workspaces/common/workspaces';
-// import { IWorkspaceContextService } from 'vs/platform/workspace/common/workspace';
-// import { onUnexpectedError } from 'vs/base/common/errors';
-// import {
-// 	ILabelService,
-// 	Verbosity
-// } from 'vs/platform/label/common/label';
-// import { IWindowOpenable } from 'vs/platform/window/common/window';
-// import { splitName } from 'vs/base/common/labels';
+import { IRecentFolder, IRecentWorkspace, IWorkspacesService } from 'vs/platform/workspaces/common/workspaces';
 import { IHostService } from 'vs/workbench/services/host/browser/host';
 import { isMacintosh } from 'vs/base/common/platform';
-import {
-	Delayer,
-	// Throttler
-} from 'vs/base/common/async';
+import { Delayer } from 'vs/base/common/async';
 import { GettingStartedInput } from 'vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedInput';
 import { GroupDirection, GroupsOrder, IEditorGroupsService } from 'vs/workbench/services/editor/common/editorGroupsService';
 import { IQuickInputService } from 'vs/platform/quickinput/common/quickInput';
