@@ -116,28 +116,20 @@ export class GettingStartedPage extends EditorPane {
 
 	private detailsScrollbar: DomScrollableElement | undefined;
 
-	// private buildSlideThrottle: Throttler = new Throttler();
-
 	private container: HTMLElement;
 
 	private contextService: IContextKeyService;
 
-	// private recentlyOpened: Promise<IRecentlyOpened>;
-	// private hasScrolledToFirstCategory = false;
 	private recentlyOpenedList?: GettingStartedIndexList<RecentEntry>;
 	private startList?: GettingStartedIndexList<IWelcomePageStartEntry>;
 	private gettingStartedList?: GettingStartedIndexList<IResolvedWalkthrough>;
 
-	// private stepsSlide!: HTMLElement;
-	// private categoriesSlide!: HTMLElement;
 	private stepsContent!: HTMLElement;
 	private stepMediaComponent!: HTMLElement;
 
 	private layoutMarkdown: (() => void) | undefined;
 
 	private detailsRenderer: GettingStartedDetailsRenderer;
-
-	// private categoriesSlideDisposables: DisposableStore;
 
 	constructor(
 		@ICommandService private readonly commandService: ICommandService,
@@ -158,10 +150,8 @@ export class GettingStartedPage extends EditorPane {
 		@IContextKeyService contextService: IContextKeyService,
 		@IQuickInputService private quickInputService: IQuickInputService,
 		@IWorkspacesService workspacesService: IWorkspacesService,
-		// @ILabelService private readonly labelService: ILabelService,
 		@IHostService private readonly hostService: IHostService,
 		@IWebviewService private readonly webviewService: IWebviewService,
-		// @IWorkspaceContextService private readonly workspaceContextService: IWorkspaceContextService,
 		@IAccessibilityService private readonly accessibilityService: IAccessibilityService,
 	) {
 
@@ -175,8 +165,6 @@ export class GettingStartedPage extends EditorPane {
 			});
 		this.stepMediaComponent = $('.getting-started-media');
 		this.stepMediaComponent.id = generateUuid();
-
-		// this.categoriesSlideDisposables = this._register(new DisposableStore());
 
 		this.detailsRenderer = new GettingStartedDetailsRenderer(this.fileService, this.notificationService, this.extensionService, this.languageService);
 
@@ -260,7 +248,6 @@ export class GettingStartedPage extends EditorPane {
 		this.container.classList.remove('animatable');
 		this.editorInput = newInput;
 		await super.setInput(newInput, options, context, token);
-		// await this.buildCategoriesSlide();
 		if (this.shouldAnimate()) {
 			setTimeout(() => this.container.classList.add('animatable'), 0);
 		}
