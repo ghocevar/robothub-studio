@@ -643,7 +643,7 @@ export class GettingStartedPage extends EditorPane {
 	}
 
 	protected createEditor(parent: HTMLElement) {
-		const iframe = $('iframe', { src: 'https://localhost:9010/_/rh-studio/get-started', frameborder: '0', allowfullscreen: 'true', height: '100%', width: '100%' });
+		const iframe = $('iframe', { src: '/_/rh-studio/get-started', allowfullscreen: 'true', height: '100%', width: '100%', style: 'border: 0; position: absolute; top: 0; left: 0;' });
 		this.container.appendChild(iframe);
 
 		parent.appendChild(this.container);
